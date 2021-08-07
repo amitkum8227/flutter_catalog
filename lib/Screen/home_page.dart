@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_catalog/Model/catalog.dart';
 import 'package:flutter_catalog/Widget/drawer.dart';
 import 'package:flutter_catalog/Widget/item_widget.dart';
+import 'package:flutter_catalog/Widget/theme.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -13,33 +14,48 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   @override
-  void initState()  {
+  void initState() {
     super.initState();
     loadData();
   }
-  loadData() async{
-    final catalogJson= await rootBundle.loadString("assets/files/catalog.json");
 
-    final decodeData=jsonDecode(catalogJson);
+  loadData() async {
+    final catalogJson =
+        await rootBundle.loadString("assets/files/catalog.json");
 
-    var productsData=decodeData["products"];
-    CatalogModel.items=List.from(productsData).map<Item>((item) => Item.fromMap(item)).toList();
+    final decodeData = jsonDecode(catalogJson);
+
+    var productsData = decodeData["products"];
+    CatalogModel.items = List.from(productsData)
+        .map<Item>((item) => Item.fromMap(item))
+        .toList();
     //print(productsData);
-    setState(() {
-
-    });
-
+    setState(() {});
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: MyTheme.creamColor,
       appBar: AppBar(
         title: Text('CodePur Project'),
       ),
-      body: ListView.builder(itemBuilder: (context,index){
-        return ItemWidget(item: CatalogModel.items[index],);
-      },
-        itemCount: CatalogModel.items.length,),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
+            ? ListView.builder(
+                itemBuilder: (context, index) {
+                  final catalog=CatalogModel.items[index];
+                  return ItemWidget(
+                    catalog:catalog,
+                  );
+                },
+                itemCount: CatalogModel.items.length,
+              )
+            : Center(
+                child: CircularProgressIndicator(),
+              ),
+      ),
       drawer: MyDrawer(),
     );
   }

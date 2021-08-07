@@ -5,7 +5,7 @@ import 'package:flutter_catalog/Screen/home_page.dart';
 import 'package:flutter_catalog/Screen/login_page.dart';
 import 'package:flutter_catalog/Widget/theme.dart';
 import 'package:flutter_catalog/utils/routes.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -18,9 +18,9 @@ class MyApp extends StatelessWidget{
       title: "Flutter Catalog",
 
       themeMode: ThemeMode.light,
-     theme:MyTheme.LightTheme(context),
+     theme:MyTheme.lightTheme(context),
 
-     darkTheme:MyTheme.DarkTheme(context),
+     darkTheme:MyTheme.darkTheme(context),
       // home: LoginPage(),
 
     routes:{
