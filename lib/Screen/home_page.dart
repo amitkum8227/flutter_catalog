@@ -46,8 +46,14 @@ class _HomePageState extends State<HomePage> {
             ? ListView.builder(
                 itemBuilder: (context, index) {
                   final catalog=CatalogModel.items[index];
-                  return ItemWidget(
-                    catalog:catalog,
+                  return Hero(
+                    tag: Key(catalog.id.toString()),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 4.0),
+                      child: ItemWidget(
+                        catalog:catalog,
+                      ),
+                    ),
                   );
                 },
                 itemCount: CatalogModel.items.length,

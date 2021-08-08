@@ -14,6 +14,7 @@ class ItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+
       child: Container(
         height: 130,
         width: 130,
@@ -25,10 +26,21 @@ class ItemWidget extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Container(
-                  padding: EdgeInsets.all(4),
-                  color: MyTheme.creamColor,
-                  child: Image.network(catalog.image)),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          HomeDetailPage(catalog:catalog ),
+                    ),
+                  );
+                },
+                child: Container(
+                    padding: EdgeInsets.all(4),
+                    color: MyTheme.creamColor,
+                    child: Image.network(catalog.image)),
+              ),
             ),
             Expanded(
                 child: Column(
