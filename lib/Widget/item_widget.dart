@@ -70,7 +70,7 @@ class ItemWidget extends StatelessWidget {
                     ),
                     ElevatedButton(
                       onPressed: () {},
-                      child: Text("Buy"),
+                      child: Text("Add To cart"),
                       style: ButtonStyle(
                           shape: MaterialStateProperty.all(StadiumBorder())),
                     )

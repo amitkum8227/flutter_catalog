@@ -1,11 +1,13 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_catalog/Model/catalog.dart';
 import 'package:flutter_catalog/Widget/drawer.dart';
 import 'package:flutter_catalog/Widget/item_widget.dart';
 import 'package:flutter_catalog/Widget/theme.dart';
+import 'package:flutter_catalog/utils/routes.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -37,6 +39,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyTheme.creamColor,
+      floatingActionButton: FloatingActionButton(onPressed: (){
+        Navigator.pushNamed(context, MyRoutes.CartPageRoute);
+      },
+      child: Icon(CupertinoIcons.cart),),
       appBar: AppBar(
         title: Text('CodePur Project'),
       ),
