@@ -38,13 +38,14 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyTheme.creamColor,
+      backgroundColor: Theme.of(context).cardColor,
       floatingActionButton: FloatingActionButton(onPressed: (){
         Navigator.pushNamed(context, MyRoutes.CartPageRoute);
       },
       child: Icon(CupertinoIcons.cart),),
       appBar: AppBar(
-        title: Text('CodePur Project'),
+        backgroundColor: Colors.deepPurple,
+        title: Text('CodePur Project' ,style: TextStyle(color: Theme.of(context).cardColor),),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

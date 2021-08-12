@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/Screen/home_detail_page.dart';
 import 'package:flutter_catalog/Screen/home_page.dart';
+import 'package:flutter_catalog/Widget/addToCart.dart';
 import 'package:flutter_catalog/Widget/theme.dart';
 import '../Model/catalog.dart';
 
@@ -68,12 +69,8 @@ class ItemWidget extends StatelessWidget {
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                     ),
-                    ElevatedButton(
-                      onPressed: () {},
-                      child: Text("Add To cart"),
-                      style: ButtonStyle(
-                          shape: MaterialStateProperty.all(StadiumBorder())),
-                    )
+
+                  AddToCart(catalog: catalog),
                   ],
                 )
               ],

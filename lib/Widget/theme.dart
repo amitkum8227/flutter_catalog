@@ -7,6 +7,9 @@ class MyTheme {
           fontFamily: GoogleFonts
               .lato()
               .fontFamily,
+          cardColor: Colors.white,
+          canvasColor: Colors.grey,
+          buttonColor: Colors.deepPurple ,
           appBarTheme: AppBarTheme(
             color: Colors.white,
             elevation: 0.0,
@@ -19,7 +22,21 @@ class MyTheme {
       );
 
   static ThemeData darkTheme(BuildContext context) =>ThemeData(
-      brightness: Brightness.dark
-  );
+      fontFamily: GoogleFonts
+          .lato()
+          .fontFamily,
+      cardColor: Colors.black,
+      canvasColor: Colors.grey,
+      buttonColor: Colors.deepPurple ,
+      appBarTheme: AppBarTheme(
+        color: Colors.black,
+        elevation: 0.0,
+        iconTheme: IconThemeData(color: Colors.black),
+        textTheme: Theme
+            .of(context)
+            .textTheme,
+
+  ));
 static Color creamColor=Color(0xfff5f5f5);
+
 }
