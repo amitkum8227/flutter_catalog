@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/Model/cart.dart';
+import 'package:flutter_catalog/core/store.dart';
+import 'package:velocity_x/velocity_x.dart';
 //import 'package:flutter_catalog/Widget/cart_list.dart';
 
 class CartPage extends StatefulWidget {
@@ -39,15 +41,20 @@ class _CartTotal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cart=CartModel();
+    //final cart=CartModel();
+    final CartModel? _cart= (VxState.store as MyStore).cart;
     return SizedBox(
       height: 200,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Text(
-            "\$${cart.totalPrice}",
-            style: TextStyle(fontSize: 25),
+          VxConsumer(mutations: {RemoveMutation},builder: (context,_,status){
+            return  Text(
+              "\$${_cart!.totalPrice}",
+              style: TextStyle(fontSize: 25),
+            );
+          }, notifications: {},
+
           ),
           SizedBox(
             width: 30,
@@ -69,18 +76,24 @@ class _CartTotal extends StatelessWidget {
   }
 }
 class _CartList extends StatelessWidget {
-  const _CartList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final cart=CartModel();
-    return ListView.builder(itemCount: cart.items.length,itemBuilder:(context,index)=>ListTile(
+    VxState.watch(context,on: [RemoveMutation]);
+    final CartModel? _cart= (VxState.store as MyStore).cart;
+    return _cart!.items.isEmpty?Center(child: Text("nothing to show: add products "),): ListView.builder(itemCount: _cart!.items.length,itemBuilder:(context,index)=>ListTile(
       leading: Icon(Icons.done),
       trailing: IconButton(
-        icon: Icon(Icons.remove),
-        onPressed: (){},
+        icon: Icon(Icons.remove_circle_outline),
+        onPressed: (){
+          RemoveMutation(_cart.items[index]);
+          //setState(() {
+
+         // });
+
+        },
       ),
-      title: Text(cart.items[index].name),
+      title: Text(_cart.items[index].name),
     ) );
   }
 }
