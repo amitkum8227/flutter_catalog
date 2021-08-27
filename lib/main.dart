@@ -4,6 +4,7 @@ import 'package:flutter_catalog/Screen/home_page.dart';
 
 
 import 'package:flutter_catalog/Screen/login_page.dart';
+import 'package:flutter_catalog/Screen/signup_page.dart';
 import 'package:flutter_catalog/Widget/theme.dart';
 import 'package:flutter_catalog/core/store.dart';
 import 'package:flutter_catalog/utils/routes.dart';
@@ -27,11 +28,21 @@ class MyApp extends StatelessWidget{
       // home: LoginPage(),
 
     routes:{
-      "/": (context) => HomePage(),
+      "/": (context) => SignUpPage()
+
+
+
+
+
+
+
+
+      ,
       MyRoutes.loginRoute: (context) => LoginPage(),
       MyRoutes.homeRoute : (context) =>HomePage(),
       MyRoutes.CartPageRoute : (context) =>CartPage(),
-
+      MyRoutes.CartPageRoute : (context) =>CartPage(),
+      MyRoutes.signupRoute:(context)=>SignUpPage(),
     },
 
     );

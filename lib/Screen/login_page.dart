@@ -28,6 +28,10 @@ class _LoginPageState extends State<LoginPage> {
        });
      }
    }
+  void signUpPressed() async {
+
+    Navigator.pushNamed(context, MyRoutes.signupRoute);
+  }
 
 
   @override
@@ -94,18 +98,36 @@ class _LoginPageState extends State<LoginPage> {
                       child: Text('login'),
                       style: TextButton.styleFrom(minimumSize: Size(150, 40)),
                     )*/
-                    InkWell(
-                      onTap: changeButtonShape,
-                      child: AnimatedContainer(
-                        duration: Duration(seconds: 1),
-                        height: 50,
-                        width:changeButton?50: 150,
-                      alignment: Alignment.center,
-                      child:changeButton? Icon(Icons.done): Text("Login",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
-                      decoration: BoxDecoration(
-                        color: Colors.deepPurple,
-                        borderRadius: BorderRadius.circular(8),
-                      ),),
+                    Row(
+                      children: [
+                        InkWell(
+                          onTap: changeButtonShape,
+                          child: AnimatedContainer(
+                            duration: Duration(seconds: 1),
+                            height: 50,
+                            width:changeButton?50: 120,
+                          alignment: Alignment.center,
+                          child:changeButton? Icon(Icons.done): Text("Login",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+                          decoration: BoxDecoration(
+                            color: Colors.deepPurple,
+                            borderRadius: BorderRadius.circular(8),
+                          ),),
+                        ),
+                        SizedBox(width: 50,),
+                        InkWell(
+                          onTap: signUpPressed,
+                          child: AnimatedContainer(
+                            duration: Duration(seconds: 1),
+                            height: 50,
+                            width:changeButton?50: 120,
+                            alignment: Alignment.center,
+                            child:changeButton? Icon(Icons.done): Text("Sign Up",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+                            decoration: BoxDecoration(
+                              color: Colors.deepPurple,
+                              borderRadius: BorderRadius.circular(8),
+                            ),),
+                        ),
+                      ],
                     )
                   ],
                 ),
